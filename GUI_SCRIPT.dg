@@ -60,8 +60,10 @@ const START_SCRIPT =`
 	..##,2
 	..button,Mobile App, window.location.href = "x10/index.html";
 	..button,GRAFANA,    window.location.href = window.location.protocol + "//" + window.location.hostname + ":3000"
-
-
+	..##,2
+	..button,Chronograf, window.location.href = window.location.protocol + "//" + window.location.hostname + ":8888"
+	..
+ 
 
 	..[pop](isConfig_pop),10px 20px
 	..{
