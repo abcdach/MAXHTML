@@ -38,7 +38,7 @@ function initWebSocket() {
 	try {
 		if (typeof MozWebSocket == 'function') WebSocket = MozWebSocket;
 		if ( websocket && websocket.readyState == 1 ) websocket.close();
-		websocket = new WebSocket( "ws://" + Server_IP.GetValue() + ":4003" );
+		websocket = new WebSocket( "ws://" + Server_IP.GetValue() + ":4000" );
 		P02_0A.show(0);P02_1A.show(1);P02_2A.show(0);
 		websocket.onopen = function (evt)
 		{

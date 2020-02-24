@@ -54,10 +54,14 @@ const START_SCRIPT =`
 		Connect_To_Server();
 	..//button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-gear,
 		Popup_Open('isConfig_pop');
-		
+	..##,2
 	..button,MAXIOT STUDIO, window.location.href = "x01/index.html";	
-	..button,Sensor Manager,window.location.href = "x14/index.html";	
-	..button,Mobile App,    window.location.href = "x10/index.html";	
+	..button,Sensor Manager,window.location.href = "x14/index.html";
+	..##,2
+	..button,Mobile App, window.location.href = "x10/index.html";
+	..button,GRAFANA,    window.location.href = window.location.protocol + "//" + window.location.hostname + ":3000"
+
+
 
 	..[pop](isConfig_pop),10px 20px
 	..{
