@@ -12,6 +12,11 @@ put_input_Password('ID','text');
 get_input_Password('ID');
 **/
 /** 
+
+
+<script language="JavaScript">
+document.write('<a href="' + window.location.protocol + '//' + window.location.hostname + ':8080' + window.location.pathname + '" >Link to same page on port 8080:</a> ' );
+</script>
 Put_Header
 
 
@@ -62,7 +67,8 @@ const START_SCRIPT =`
 	..button,GRAFANA,    window.location.href = window.location.protocol + "//" + window.location.hostname + ":3000"
 	..##,2
 	..button,Chronograf, window.location.href = window.location.protocol + "//" + window.location.hostname + ":8888"
-	..
+	..button,Jupyter Notebook, window.location.href = window.location.protocol + "//" + window.location.hostname + ":85"
+
  
 
 	..[pop](isConfig_pop),10px 20px
