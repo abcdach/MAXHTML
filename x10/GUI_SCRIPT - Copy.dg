@@ -36,125 +36,42 @@ console.log
 /** 
 		<a href="#page_1" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all">No text</a>
 		<a onclick="disconnect_To_Server()"  class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all">No text</a>
-		
-		
-..[w],1
-..{
-..header,1,text
-..}
-		
 **/		
 
 
-
-
-
-const START_SCRIPTy =`
-
-
-
-..[w],1
-..{
-	..header_text,Header Text
-	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
-	..header_button,, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l
-	..navbar(nav1),--page_1(1)--page_2(2)--page_3(3)
-	..javascript,
-		console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-		console.log("yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
-
-	..js_pc,
-		console.log("js_pc xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
-		console.log("js_pc yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
-
-..}
-..[w],1
-..{
-	..button, Button Text, console.log("1"); Write_Memory('isIP', '192.168.0.105');
-	..button,,console.log("Read_Memory:"+Read_Memory('isIP'));
-..}
-
-
-
-`;
-
-
-//..if_event, In_0, put_input_text('t3_1',Value);
-
-
-
-
-
-
-var Part_1 =`
+const START_SCRIPT =`
 ..[w],3
 ..{
-	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
-	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
-		Page_change('1');	
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-delete
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-carat-l,
+		Page_change('page_1');
 ..}
+
 ..[w],1
 ..{
-	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
 		Connect_To_Server();
-	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-gear,
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-gear,
 		Popup_Open('isConfig_pop');
-	
-	..js,
-		function Connect_To_Server(){
-			MQTT_HOST     = Read_Memory('mem_Host');
-			MQTT_PORT     = Read_Memory('mem_Port');
-			MQTT_DEV_ID   = Read_Memory('mem_Device_ID');
-			MQTT_DEV_Name = Read_Memory('mem_Device_Name');
-			if(Connect_Status === 0)SYS_LOOP_START();
-			if(Connect_Status === 1)Page_change('3');
-		}
-	
-	..js,
-		function Refresh_isConfig(){
-			put_input_text('it_pop1_Host',Read_Memory('mem_Host'));
-			put_input_text('it_pop1_Port',Read_Memory('mem_Port'));
-			put_input_text('it_pop1_Device_ID',Read_Memory('mem_Device_ID'));
-			put_input_text('it_pop1_Device_Name',Read_Memory('mem_Device_Name'));
-			console.log("js_pc ----------------------------------------------");		
-			console.log('it_pop1_Host: ',Read_Memory('mem_Host'));
-			console.log('it_pop1_Port: ',Read_Memory('mem_Port'));
-			console.log('it_pop1_Device_ID: ',Read_Memory('mem_Device_ID'));
-			console.log('it_pop1_Device_Name: ',Read_Memory('mem_Device_Name'));
-			console.log("js_pc ----------------------------------------------");
-		}
-		
-	..js_pc, Refresh_isConfig();
-		
+
 	..[pop](isConfig_pop),10px 20px
 	..{
-		..label,Host:
-		..input_text(it_pop1_Host),
+		..label, Host Name:
+		..input_text, http://maxh6/
 		..label,Port:
-		..input_text(it_pop1_Port),
+		..input_text, 3004
 		..label,Device ID:
-		..input_text(it_pop1_Device_ID),
+		..input_text, 1655
 		..label,Device Name:
-		..input_text(it_pop1_Device_Name),
+		..input_text,Mob_Test
 		..##,2 
-		..button,Save,
-			console.log("js_pc ----------------------------------------------");
-			console.log('Host: ',       get_input_text('it_pop1_Host'));
-			console.log('Port: ',       get_input_text('it_pop1_Port'));
-			console.log('Device_ID: ',  get_input_text('it_pop1_Device_ID'));
-			console.log('Device_Name: ',get_input_text('it_pop1_Device_Name'));
-			console.log("js_pc ----------------------------------------------");
-			Write_Memory('mem_Host', 		get_input_text('it_pop1_Host'));
-			Write_Memory('mem_Port', 		get_input_text('it_pop1_Port'));
-			Write_Memory('mem_Device_ID', 	get_input_text('it_pop1_Device_ID'));
-			Write_Memory('mem_Device_Name', get_input_text('it_pop1_Device_Name'));
-		..button,Refresh, Refresh_isConfig();
+		..button,Save,Out_0("OK");
+		..button,Connect,Connect_To_Server();
 	..}	
 ..}
 `;
 
 
-var START_SCRIPT = Part_1;
 
 
 
@@ -168,30 +85,20 @@ var START_SCRIPT = Part_1;
 
 
 
-
-
-
-
-
-
-
-
-
-
-const START_SCRIPT3x =`
+const START_SCRIPT3 =`
 
 ..[w],1
 ..{
 
 	..navbar(nnav1_1),1,--Main(page_1)--Options(page_2)--Device(page_3)
-	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-icon-cloud, 
 		console.log('1111111');
 		Connect_To_Server();
-	..header_button,name, ui-btn ui-btn-icon-notext ui-corner-all ui-btn-icon-left, console.log('1111111');
+	..button_header,name, ui-btn ui-btn-icon-notext ui-corner-all ui-btn-icon-left, console.log('1111111');
 	
 	
 	
-	..#header_button,name, ui-input-btn ui-btn ui-icon-delete ui-btn-icon-left ui-mini, console.log('2222222');
+	..#button_header,name, ui-input-btn ui-btn ui-icon-delete ui-btn-icon-left ui-mini, console.log('2222222');
 	
 	..//Dygraph
 	..[c],is button
@@ -257,7 +164,7 @@ const START_SCRIPT3x =`
 
 ..[w],6
 ..{
-	..header_text,Main
+	..header,1,Main
 	..//navbar(nav1_1),1,
 		//-- Main(page_1)
 		//-- Options(page_2)
@@ -275,7 +182,7 @@ const START_SCRIPT3x =`
 ..}
 ..[w],2
 ..{
-	..header_button,Options
+	..header,2,Options
 	..//navbar,2,--Main(page_1)--Options(page_2)--Device(page_3)
 	..//[c],Connection Config
 	..//{
